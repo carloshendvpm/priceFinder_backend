@@ -30,7 +30,7 @@ app.post("/cadastrarProduto", async (req,res) => {
     })
 })
 
-app.post("/cadastrarUsuario", async(req, res) => {
+app.post("/cadastrarUsuarios", async(req, res) => {
     console.log(req.body)
     await Usuario.create(req.body)
     .then(()=> {
@@ -49,7 +49,7 @@ app.post("/cadastrarUsuario", async(req, res) => {
 app.get("/usuarios", async(req,res) => {
     const usuarios = await Usuario.findAll();
     console.log(usuarios.every(user => user instanceof Usuario)); 
-    console.log("Todos usuários:", JSON.stringify(usuarios, null, 2));
+    //console.log("Todos usuários:", JSON.stringify(usuarios, null, 2));
     res.json(usuarios)
 })
 
