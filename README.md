@@ -12,3 +12,9 @@ Gerencia as requisições, rotas e URLs, entre outras funcionalidades
 Instalar o módulo para reiniciar o servidor sempre que houver alterações no código fonte
 ### npm install -g nodemon
 ### npm install --save-dev nodemon
+
+
+O que falta
+- Adicionar MVC
+- Sincronizar rotas
+- update e delete
