@@ -1,23 +1,27 @@
 const Sequelize = require('sequelize');
 const db = require('./db')
 
-const Product = db.define('products', {
-    id: {
+const Usuario = db.define('usuario', {
+    idUsuario: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true,
     },
-    nome: {
+    tipoUsuario: {
+        type: Sequelize.STRING(15),
+        allowNull: false,
+    },
+    nomeUsuario: {
         type: Sequelize.STRING(45),
         allowNull: false,
     },
-    descricao: {
-        type: Sequelize.STRING(55),
+    email: {
+        type: Sequelize.STRING(45),
         allowNull: false,
     }
 });
 
-Product.sync()
+Usuario.sync()
 
-module.exports = Product;
+module.exports = Usuario;

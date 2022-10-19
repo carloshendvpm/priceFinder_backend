@@ -1,4 +1,6 @@
+require('dotenv').config()
 const Sequelize = require('sequelize');
+
 
 const sequelize = new Sequelize("precosmix", "root", "1234", {
     host: 'localhost',

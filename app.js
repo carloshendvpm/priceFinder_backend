@@ -1,14 +1,31 @@
 const express = require('express');
 const app = express();
-const Product = require('./models/Product')
 const db = require('./models/db')
+const Product = require('./models/Product')
+const Usuario = require('./models/Usuario')
+
+app.use(express.json())
 
 app.get("/", async(req,res) => {
     res.send("Página inicial !!")
 });
 
-app.post("/cadastrar", async(req,res) => {
-    res.send("Pagina de cadastro")
+app.post("/cadastrarProduto", async (req,res) => {
+    console.log(req.body)
+
+    await Product.create(req.body)
+    .then(() => {
+        return res.json({
+            error: false,
+            message:"Produto cadastrado com sucesso!",
+        })
+    }).catch((err) => {
+        return res.status(400).json({
+            error:true,
+            mensagem:err,
+        })
+    })
+
 })
 
 app.listen(8080, () => {
