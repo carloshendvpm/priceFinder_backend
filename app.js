@@ -4,7 +4,8 @@ const db = require('./models/db');
 const Product = require('./models/Product');
 const Usuario = require('./models/Usuario');
 const Categoria = require('./models/Categoria');
-const ProductPrice = require('./models/ProductPrice')
+const ProductPrice = require('./models/ProductPrice');
+const Concorrente = require('./models/Concorrente')
 
 app.use(express.json())
 
@@ -27,7 +28,6 @@ app.post("/cadastrarProduto", async (req,res) => {
             mensagem:err,
         })
     })
-
 })
 
 app.listen(8080, () => {

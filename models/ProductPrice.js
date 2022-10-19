@@ -1,5 +1,4 @@
 const Sequelize = require('sequelize');
-const sequelize = require('./db');
 const db = require('./db')
 
 const ProductPrice = db.define('preco_produto', {
