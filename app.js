@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-
+const Product = require('./models/Product')
 const db = require('./models/db')
 
 app.get("/", async(req,res) => {
