@@ -53,6 +53,25 @@ app.get("/usuarios", async(req,res) => {
     res.json(usuarios)
 })
 
+app.delete("/excluirUsuario", async(req,res) => {
+    const nomeUsuario = req.body.nomeUsuario;
+    await Usuario.destroy({
+        where:{
+            nomeUsuario,
+        }
+    }).then(() => {
+        return res.json({
+            error:false,
+            message:"Usuário removido com sucesso"
+        })
+    }).catch((err) => {
+        return res.json({
+            error: true,
+            message:err
+        })
+    })
+})
+
 app.listen(8080, () => {
     console.log("Servidor iniciado na porta 8080: https://localhost:8080")
 })
