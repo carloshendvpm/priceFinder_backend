@@ -15,7 +15,7 @@ app.get("/", async(req,res) => {
 
 app.post("/cadastrarProduto", async (req,res) => {
     console.log(req.body)
-
+    await db.sync();
     await Product.create(req.body)
     .then(() => {
         return res.json({
@@ -28,6 +28,29 @@ app.post("/cadastrarProduto", async (req,res) => {
             mensagem:err,
         })
     })
+})
+
+app.post("/cadastrarUsuario", async(req, res) => {
+    console.log(req.body)
+    await Usuario.create(req.body)
+    .then(()=> {
+        return res.json({
+            error: false,
+            message: "Usuario cadastrado com sucesso"
+        })
+    }).catch((err) => {
+        return res.status(400).json({
+            error:true,
+            mensagem: err
+        })
+    })
+});
+
+app.get("/usuarios", async(req,res) => {
+    const usuarios = await Usuario.findAll();
+    console.log(usuarios.every(user => user instanceof Usuario)); 
+    console.log("Todos usuários:", JSON.stringify(usuarios, null, 2));
+    res.json(usuarios)
 })
 
 app.listen(8080, () => {
