@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
-const db = require('./models/db')
-const Product = require('./models/Product')
-const Usuario = require('./models/Usuario')
+const db = require('./models/db');
+const Product = require('./models/Product');
+const Usuario = require('./models/Usuario');
+const Categoria = require('./models/Categoria');
+const ProductPrice = require('./models/ProductPrice')
 
 app.use(express.json())
 
