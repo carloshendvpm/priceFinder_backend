@@ -2,17 +2,17 @@ const Sequelize = require('sequelize');
 const db = require('../config/db')
 
 const Usuario = db.define('usuario', {
-    idUsuario: {
+    id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true,
     },
-    tipoUsuario: {
+    tipo: {
         type: Sequelize.STRING(15),
         allowNull: false,
     },
-    nomeUsuario: {
+    nome: {
         type: Sequelize.STRING(45),
         allowNull: false,
     },
