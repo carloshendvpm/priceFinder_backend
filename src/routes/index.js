@@ -5,7 +5,7 @@ const usuarioController = require('../controllers/UsarioController')
 const routes = Router();
 
 routes.get("/", async(req,res) => {
-    res.send("Página inicial !!")
+    res.send("test.")
 });
 
 //produtos
