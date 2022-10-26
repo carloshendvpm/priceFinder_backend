@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const db = require('./db')
+const db = require('../config/db')
 
 const Concorrente = db.define('concorrente', {
     nome: {

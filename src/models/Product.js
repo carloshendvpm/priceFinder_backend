@@ -1,19 +1,23 @@
 const Sequelize = require('sequelize');
-const db = require('./db')
+const db = require('../config/db')
 
-const Categoria = db.define('Categoria', {
-    idCategoria: {
+const Product = db.define('products', {
+    id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true,
     },
-    Nome: {
+    nome: {
         type: Sequelize.STRING(45),
         allowNull: false,
     },
+    descricao: {
+        type: Sequelize.STRING(55),
+        allowNull: false,
+    }
 });
 
-Categoria.sync()
+Product.sync()
 
-module.exports = Categoria;
+module.exports = Product;

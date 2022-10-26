@@ -1,21 +1,18 @@
 const express = require('express');
 const app = express();
-const db = require('./models/db');
-const Product = require('./models/Product');
-const Usuario = require('./models/Usuario');
-const Categoria = require('./models/Categoria');
-const ProductPrice = require('./models/ProductPrice');
-const Concorrente = require('./models/Concorrente')
+const routes = require('./src/routes')
+const db = require('./src/config/db');
+const Product = require('./src/models/Product');
+const Usuario = require('./src/models/Usuario');
+const Categoria = require('./src/models/Categoria');
+const ProductPrice = require('./src/models/ProductPrice');
+const Concorrente = require('./src/models/Concorrente');
 
 app.use(express.json())
-
-app.get("/", async(req,res) => {
-    res.send("Página inicial !!")
-});
+app.use(routes)
 
 app.post("/cadastrarProduto", async (req,res) => {
     console.log(req.body)
-    await db.sync();
     await Product.create(req.body)
     .then(() => {
         return res.json({
