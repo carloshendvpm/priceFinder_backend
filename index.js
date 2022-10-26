@@ -11,21 +11,21 @@ const Concorrente = require('./src/models/Concorrente');
 app.use(express.json())
 app.use(routes)
 
-app.post("/cadastrarProduto", async (req,res) => {
-    console.log(req.body)
-    await Product.create(req.body)
-    .then(() => {
-        return res.json({
-            error: false,
-            message:"Produto cadastrado com sucesso!",
-        })
-    }).catch((err) => {
-        return res.status(400).json({
-            error:true,
-            mensagem:err,
-        })
-    })
-})
+// app.post("/cadastrarProduto", async (req,res) => {
+//     console.log(req.body)
+//     await Product.create(req.body)
+//     .then(() => {
+//         return res.json({
+//             error: false,
+//             message:"Produto cadastrado com sucesso!",
+//         })
+//     }).catch((err) => {
+//         return res.status(400).json({
+//             error:true,
+//             mensagem:err,
+//         })
+//     })
+// })
 
 app.post("/cadastrarUsuarios", async(req, res) => {
     console.log(req.body)
