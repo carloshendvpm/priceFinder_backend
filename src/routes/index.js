@@ -1,12 +1,17 @@
 const { Router } = require('express')
 const productController = require('../controllers/ProductController') 
 const usuarioController = require('../controllers/UsarioController')
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('../../swagger.json');
 
 const routes = Router();
 
-routes.get("/", async(req,res) => {
+routes.get("/test", async(req,res) => {
     res.send("test.")
 });
+
+routes.use('/api-docs',swaggerUi.serve)
+routes.get('/api-docs', swaggerUi.setup(swaggerDocument));
 
 //produtos
 routes.post("/cadastrarProduto", productController.cadastraProduto)

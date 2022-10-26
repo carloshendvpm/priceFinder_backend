@@ -1,0 +1,65 @@
+{
+    "openapi":"3.0.0",
+    "info": {
+        "title":"API Preços Mix",
+        "description":"Api feita para o preços mix durante a 3ª etapa do ciclo de residência do Embarque Digital",
+        "contact":{
+            "email":"hencarlosdv@gmail.com"
+        },
+        "version":"1.0.0"
+    },
+    "servers": [
+        {
+            "url":"http://localhost:8080/",
+            "description":"Api master"
+        }
+    ],
+    "paths":{
+        "/cadastrar-usuario": {
+            "post":{
+                "summary":"Cadastro de usuários",
+                "description":"Essa rota será responsável por realizar o cadastro de usuários no sistema",
+                "tags":["Usuarios"],
+                "requestBody": {
+                    "content":{
+                        "application/json":{
+                            "schema": {
+                                "$ref":"#/components/schemas/Usuario"
+                            },
+                        "examples":{
+                            "Usuario":{
+                                "value":{
+                                    "tipo":"Admin",
+                                    "nome":"Carlos Henrique",
+                                    "email":"carlos@gmail.com"
+                                }
+                            }
+                        }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas":{
+            "Usuario":{
+                "type":"object",
+                "properties":{
+                    "tipo":{
+                        "type":"string"
+                    },
+                    "nome":{
+                        "type":"string"
+                    },
+                    "email":{
+                        "type":"string"
+                    },
+                    "id":{
+                        "type":"string"
+                    }
+                }
+            }
+        }
+    }
+}
