@@ -20,7 +20,7 @@ module.exports = {
         res.status(400).json({err})
     }
 },
-    async updateProduct(req, res){
+    async atualizaProduto(req, res){
         try{
             const { id } = req.params
             const { nome, descricao } = req.body
@@ -40,7 +40,7 @@ module.exports = {
         }
       
     },
-    async listProducts(req, res) {
+    async listaTodosProdutos(req, res) {
         try {
             const products = Product.findAll()
 
