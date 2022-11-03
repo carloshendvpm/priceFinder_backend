@@ -13,8 +13,3 @@ Instalar o módulo para reiniciar o servidor sempre que houver alterações no c
 ### npm install -g nodemon
 ### npm install --save-dev nodemon
 
-
-O que falta
-- Adicionar MVC
-- Sincronizar rotas
-- update e delete
