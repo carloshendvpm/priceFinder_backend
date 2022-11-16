@@ -1,15 +1,15 @@
 const Sequelize = require('sequelize');
 const db = require('../config/db')
 
-const Usuario = db.define('usuario', {
+const Usuario = db.define('usuarios', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true,
     },
-    tipo: {
-        type: Sequelize.STRING(15),
+    password: {
+        type: Sequelize.STRING,
         allowNull: false,
     },
     nome: {
@@ -19,6 +19,10 @@ const Usuario = db.define('usuario', {
     email: {
         type: Sequelize.STRING(45),
         allowNull: false,
+    },
+    tipo: {
+        type: Sequelize.STRING(45),
+        allowNull: true,
     }
 });
 
