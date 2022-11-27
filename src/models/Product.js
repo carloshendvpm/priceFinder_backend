@@ -15,7 +15,7 @@ const Product = db.define('products', {
     descricao: {
         type: Sequelize.STRING(55),
         allowNull: false,
-    }
+    },
 });
 
 Product.sync()

@@ -3,14 +3,14 @@ const Product = require('../models/Product')
 module.exports = {
     async cadastraProduto (req,res)  {
     try{
-        const { nome, descricao } = req.body
+        const { nome, descricao, preco } = req.body
         
         const product = await Product.findOne({where: {nome}})
 
         if(product){
             res.status(401).json({message:"Já existe um produto cadastrado!"})
         } else {
-            const product = await Product.create({ nome, descricao })
+            const product = await Product.create({ nome, descricao, preco })
             res.status(200).json({message: "Produto cadastrado com sucesso!"})
         }
         
@@ -28,7 +28,7 @@ module.exports = {
             const product = await Product.findOne({where: { id }})
     
             if(!product){
-                res.status(401).json({message:"Nenhum usuário encontrado"})
+                res.status(401).json({message:"Nenhum produto encontrado"})
             }else {
                 const product = await Product.update({nome, descricao}, {where: { id } })
     
@@ -42,11 +42,10 @@ module.exports = {
     },
     async listaTodosProdutos(req, res) {
         try {
-            const products = Product.findAll()
-
-            if(!products){
-                res.status(200).json({ message: "Não existem produtos cadastrados!"})
-            }
+            const products = await Product.findAll({
+                order: [['nome', 'ASC']]
+            })
+            if(!products) res.status(200).json({ message: "Não existem produtos cadastrados!"})
             res.status(200).json({ products })
         } catch(err){
             res.status(400).json({ err })

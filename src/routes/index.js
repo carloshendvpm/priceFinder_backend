@@ -12,9 +12,9 @@ routes.use('/api-docs',swaggerUi.serve)
 routes.get('/api-docs', swaggerUi.setup(swaggerDocument));
 
 //produtos
-routes.post('/cadastrarProduto', productController.cadastraProduto)
-routes.get('/listar-produtos', productController.listaTodosProdutos)
-routes.put('/atualizar-produto/:id', productController.atualizaProduto)
+routes.post('/produtos', productController.cadastraProduto)
+routes.get('/produtos', productController.listaTodosProdutos)
+routes.put('/produtos/:id', productController.atualizaProduto)
 
 //usuarios
 routes.post('/login', auth.login);

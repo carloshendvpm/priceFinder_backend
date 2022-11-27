@@ -1,5 +1,3 @@
-
-
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const Usuario = require('../models/Usuario')
@@ -7,7 +5,6 @@ const Usuario = require('../models/Usuario')
 module.exports = {
         async signup (req, res, next) {
             try {
-                    // checks if email already exists
                     Usuario.findOne({ where : {
                         email: req.body.email, 
                     }})
@@ -22,11 +19,11 @@ module.exports = {
                                 } else if (passwordHash) {
                                     return Usuario.create(({
                                         email: req.body.email,
-                                        nome: req.body.name,
+                                        nome: req.body.nome,
                                         password: passwordHash,
                                     }))
                                     .then(() => {
-                                        res.status(200).json({message: "usuario criado"});
+                                        res.status(200).json({message: "Cadastro efetuado com sucesso."});
                                     })
                                     .catch(err => {
                                         console.log(err);
@@ -86,14 +83,12 @@ async isAuth (req, res, next)  {
             return res.status(500).json({ message: err.message || 'Não foi possível decodificar o token' });
         };
         if (!decodedToken) {
-            res.status(401).json({ message: 'unauthorized' });
+            res.status(401).json({ message: 'Não autorizado' });
         } else {
-            res.status(200).json({ message: 'here is your resource' });
+            res.status(200).json({ message: 'Login efetuado' });
         };
     }catch(err){
         res.status(400).json({ err })
     }
-    
-
 }
 }
