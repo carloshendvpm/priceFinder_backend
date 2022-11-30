@@ -16,6 +16,9 @@ const Product = db.define('products', {
         type: Sequelize.STRING(55),
         allowNull: false,
     },
+    preco: {
+        type: Sequelize.FLOAT,
+    }
 });
 
 Product.sync()
