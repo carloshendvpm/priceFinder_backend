@@ -15,131 +15,10 @@
         }
     ],
     "paths":{
-        "/cadastrar-usuario": {
-            "post":{
-                "summary":"Cadastro de usuários",
-                "description":"Essa rota será responsável por realizar o cadastro de usuários no sistema",
-                "tags":["Usuarios"],
-                "requestBody": {
-                    "content":{
-                        "application/json":{
-                            "schema": {
-                                "$ref":"#/components/schemas/Usuario"
-                            },
-                        "examples":{
-                            "Usuario":{
-                                "value":{
-                                    "tipo":"Admin",
-                                    "nome":"Carlos Henrique",
-                                    "email":"carlos@gmail.com"
-                                }
-                            }
-                        }
-                        }
-                    }
-                },
-                "responses": {
-                    "401": {
-                      "description": "Já existe um usuario com este email!"
-                    },
-                    "200": {
-                      "description": "Usuário cadastrado com sucesso!",
-                      "content": {
-                        "application/json": {
-                          "schema": {
-                            "type": "object",
-                            "$ref": "#/components/schemas/Usuario"
-                          }
-                        }
-                      }
-                    }
-                  }
-            }
-        },
-        "/listar-usuarios": {
-            "get": {
-              "description": "Lista usuários cadastrados",
-              "summary": "Lista usuários cadastrados",
-              "tags": ["Usuarios"],
-              "responses": {
-                "401": {
-                    "description": "Não foi possível listar usuários cadastrados"
-                },
-                "200": {
-                  "description": "Ok",
-                  "content": {
-                    "application/json": {
-                      "schema": {
-                        "type": "object",
-                        "$ref": "#/components/schemas/Usuario"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "/atualizar-usuario": {
-            "put": {
-              "description": "atualiza usuários pelo ID",
-              "summary": "atualiza usuários pelo ID",
-              "tags": ["Usuarios"],
-              "parameters": [
-                {
-                  "name": "id",
-                  "in": "path",
-                  "description": "atualiza usuario pelo ID",
-                  "required": true
-                }
-              ],
-              "requestBody": {
-                "content": {
-                  "application/json": {
-                    "schema": {
-                      "$ref": "#/components/schemas/Usuario"
-                    },
-                    "examples": {
-                      "Usuario": {
-                        "value": {
-                          "tipo": "Admin",
-                          "nome": "Gabriel Torres",
-                          "email": "gabriel@gmail.com"
-                        }
-                      }
-                    }
-                  }
-                }
-              },
-              "responses": {
-                "401": {
-                    "description": "Não foi possível atualizar este usuário!"
-                },
-                "200": {
-                  "description": "Ok",
-                  "content": {
-                    "application/json": {
-                      "schema": {
-                        "type": "object",
-                        "$ref": "#/components/schemas/Usuario"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-        "/deleta-usuario/{id}": {
-            "delete": {
-                "description":"Deleta usuários pelo ID",
-                "summary":"Deleta usuários pelo ID",
-                "tags":["Usuarios"]
-
-            }
-        },
-        "/cadastrar-produto":{
+        "/produto":{
             "post":{
                 "description":"Cadastra novos produtos",
-                "summary":"Cadastra novos usuários",
+                "summary":"Cadastra novos produtos",
                 "tags":["Produtos"],
                 "requestBody": {
                     "content":{
@@ -151,7 +30,8 @@
                             "produto":{
                                 "value":{
                                     "nome":"Sabão em pó",
-                                    "descricao":"Usado para lavar roupas"
+                                    "descricao":"Usado para lavar roupas",
+                                    "preco": 15.40
                                 }
                             }
                         }
@@ -176,7 +56,7 @@
                   }
             }
         },
-        "listar-produtos":{
+        "produtos":{
             "get":{
                 "description":"Lista todos os produtos cadastrados",
                 "summary":"Lista todos os produtos cadastrados",
