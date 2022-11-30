@@ -21,29 +21,22 @@ module.exports = {
     }
 },
     async atualizaProduto(req, res){
-        try{
-            const { id } = req.params
-            const { nome, descricao } = req.body
-    
-            const product = await Product.findOne({where: { id }})
-    
-            if(!product){
-                res.status(401).json({message:"Nenhum produto encontrado"})
-            }else {
-                const product = await Product.update({nome, descricao}, {where: { id } })
-    
-                res.status(200).json({ product })
+        const produto = req.body
+    try {
+        await Product.update({preco: produto.preco}, {
+            where: {
+                id: produto.id
             }
-    
-        } catch(err){
-            res.status(400).json({ err })
-        }
-      
+        })
+        res.json({produto})
+    } catch (e) {
+        res.status(500).json({mensagem: 'Erro atualizando produto.'})
+    }
     },
     async listaTodosProdutos(req, res) {
         try {
             const products = await Product.findAll({
-                order: [['nome', 'ASC']]
+                order: [['nome', 'ASC'], ['preco', 'ASC']]
             })
             if(!products) res.status(200).json({ message: "Não existem produtos cadastrados!"})
             res.status(200).json({ products })
