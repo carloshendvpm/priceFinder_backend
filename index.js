@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const app = express();
 const routes = require('./src/routes');
@@ -16,6 +17,6 @@ app.use((req, res,next) => {
 app.use(routes)
 
 
-app.listen(8080, () => {
-    console.log("Servidor iniciado na porta 8080: https://localhost:8080")
+app.listen(process.env.PORT, () => {
+    console.log(`Servidor iniciado na porta ${process.env.PORT}: https://localhost:${process.env.PORT}"`)
 })
