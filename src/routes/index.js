@@ -14,7 +14,7 @@ routes.get('/api-docs', swaggerUi.setup(swaggerDocument));
 //produtos
 routes.post('/produtos', productController.cadastraProduto)
 routes.get('/produtos', productController.listaTodosProdutos)
-routes.put('/produtos/:id', productController.atualizaProduto)
+routes.put('/produtos', productController.atualizaProduto)
 
 //usuarios
 routes.post('/login', auth.login);
