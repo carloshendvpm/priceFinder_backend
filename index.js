@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const routes = require('./src/routes');
 const cors = require('cors');
+const PORT = process.env.PORT || 8080
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
@@ -17,6 +18,6 @@ app.use((req, res,next) => {
 app.use(routes)
 
 
-app.listen(process.env.PORT, () => {
+app.listen(PORT, () => {
     console.log(`Servidor iniciado na porta ${process.env.PORT}: https://localhost:${process.env.PORT}"`)
 })
