@@ -1,27 +1,40 @@
 require('dotenv').config()
 const Sequelize = require('sequelize');
-const mysql = require('mysql2');
+const { Client } = require('pg');
 
-const connection = mysql.createConnection({
-    host: "localhost",
+const client = new Client({
     user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
     password: process.env.DB_PASS,
-  });
-  
-  // Run create database statement
-  connection.query(
-    `CREATE DATABASE IF NOT EXISTS precosmix`,
-    function (err, result) {
-        if(err) throw err
-        console.log("Database criado")
+    port: process.env.DB_PORT
+})
+
+const execute = async (query) => {
+    try {
+        await client.connect();     
+        await client.query(query);  
+        return true;
+    } catch (error) {
+        console.error(error.stack);
+        return false;
+    } finally {
+        await client.end();         
     }
-  );
+};
+const text = `
+        CREATE DATABASE IF NOT EXISTS precosmix
+    );`;
   
-  // Close the connection
-connection.end();
+  execute(text).then(result => {
+    if (result) {
+        console.log('Database criado');
+    }
+});
+
 const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
     host: 'localhost',
-    dialect: 'mysql'
+    dialect: 'postgres'
 });
 sequelize.authenticate()
 .then(() => {
